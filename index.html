@@ -53,6 +53,114 @@
             --dark-text: #1a1a1a;
             --body-text: #444;
             --muted: #666;
+            --card-shadow: rgba(0,0,0,0.06);
+            --input-border: #ddd;
+            --header-shadow: rgba(0,0,0,0.08);
+        }
+
+        /* ===== DARK MODE ===== */
+        body.dark {
+            --primary: #4CAF50;
+            --accent: #66BB6A;
+            --light-bg: #1a1a1a;
+            --white: #222;
+            --dark-text: #e8e8e8;
+            --body-text: #ccc;
+            --muted: #999;
+            --card-shadow: rgba(0,0,0,0.3);
+            --input-border: #444;
+            --header-shadow: rgba(0,0,0,0.3);
+            background: #111;
+            color: #ccc;
+        }
+
+        body.dark header {
+            box-shadow: 0 2px 12px var(--header-shadow);
+        }
+
+        body.dark .hamburger span {
+            background: #ccc;
+        }
+
+        body.dark .stat-card,
+        body.dark .solution-card,
+        body.dark .fund-card,
+        body.dark .involved-card,
+        body.dark .contact-form {
+            box-shadow: 0 2px 12px var(--card-shadow);
+        }
+
+        body.dark .team-photo {
+            background: #2a3a2a;
+            border-color: var(--accent);
+        }
+
+        body.dark .image-placeholder {
+            background: #2a3a2a;
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        body.dark .form-group input,
+        body.dark .form-group textarea {
+            background: #333;
+            border-color: var(--input-border);
+            color: #e8e8e8;
+        }
+
+        body.dark footer {
+            background: #1a1a1a;
+        }
+
+        body.dark .hero {
+            background: linear-gradient(135deg, #0d3310 0%, #1a4a1e 50%, #1B5E20 100%);
+        }
+
+        /* ===== DARK MODE TOGGLE ===== */
+        .dark-toggle {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-left: 8px;
+        }
+
+        .dark-toggle-label {
+            font-size: 0.85rem;
+            color: var(--muted);
+            cursor: pointer;
+        }
+
+        .toggle-switch {
+            position: relative;
+            width: 44px;
+            height: 24px;
+            background: #ccc;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: background 0.3s;
+            border: none;
+            padding: 0;
+        }
+
+        .toggle-switch::after {
+            content: '';
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 18px;
+            height: 18px;
+            background: #fff;
+            border-radius: 50%;
+            transition: transform 0.3s;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+        }
+
+        .toggle-switch.active {
+            background: var(--accent);
+        }
+
+        .toggle-switch.active::after {
+            transform: translateX(20px);
         }
 
         /* ===== UTILITY ===== */
@@ -176,8 +284,8 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: url('') center/cover no-repeat;
-            opacity: 0.15;
+            background: url('https://images.unsplash.com/photo-1593113598332-cd288d649433?w=1600&q=80') center/cover no-repeat;
+            opacity: 0.2;
         }
 
         .hero-content {
@@ -288,10 +396,21 @@
         .solution-card {
             background: var(--white);
             border-radius: 16px;
-            padding: 40px 28px;
+            padding: 0;
             text-align: center;
             box-shadow: 0 2px 16px rgba(0,0,0,0.06);
             border-top: 4px solid var(--accent);
+            overflow: hidden;
+        }
+
+        .solution-card .card-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .solution-card .card-body {
+            padding: 24px 28px 36px;
         }
 
         .solution-icon {
@@ -765,6 +884,11 @@
                 <a href="#team">Team</a>
                 <a href="#involved">Get Involved</a>
             </nav>
+            <div class="dark-toggle">
+                <span class="dark-toggle-label">&#9788;</span>
+                <button class="toggle-switch" id="darkToggle" aria-label="Toggle dark mode"></button>
+                <span class="dark-toggle-label">&#9790;</span>
+            </div>
             <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu">
                 <span></span>
                 <span></span>
@@ -826,19 +950,28 @@
             <p class="section-subheading fade-up">Rather than treating symptoms in isolation, we address multiple dimensions of the homeless experience simultaneously.</p>
             <div class="solution-grid">
                 <div class="solution-card fade-up">
-                    <div class="solution-icon" aria-hidden="true">&#9832;</div>
-                    <h3>Public Microwaves</h3>
-                    <p>We install small, wall-mounted microwaves in areas of high homelessness. People can heat shop-bought meals for around &pound;3, choosing what they want to eat — restoring dignity and autonomy rather than relying solely on soup kitchens with limited menus.</p>
+                    <img class="card-img" src="https://images.unsplash.com/photo-1547592180-85f173990554?w=600&q=80" alt="Warm meal being prepared">
+                    <div class="card-body">
+                        <div class="solution-icon" aria-hidden="true">&#9832;</div>
+                        <h3>Public Microwaves</h3>
+                        <p>We install small, wall-mounted microwaves in areas of high homelessness. People can heat shop-bought meals for around &pound;3, choosing what they want to eat — restoring dignity and autonomy rather than relying solely on soup kitchens with limited menus.</p>
+                    </div>
                 </div>
                 <div class="solution-card fade-up">
-                    <div class="solution-icon" aria-hidden="true">&#9889;</div>
-                    <h3>The Energy Gym</h3>
-                    <p>Our gym uses modified dumbbells, rowing machines and exercise bikes that generate electricity through kinetic energy. The power is stored in batteries and used to run our facilities. Members of the public help the homeless simply by working out.</p>
+                    <img class="card-img" src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&q=80" alt="People working out in a gym">
+                    <div class="card-body">
+                        <div class="solution-icon" aria-hidden="true">&#9889;</div>
+                        <h3>The Energy Gym</h3>
+                        <p>Our gym uses modified dumbbells, rowing machines and exercise bikes that generate electricity through kinetic energy. The power is stored in batteries and used to run our facilities. Members of the public help the homeless simply by working out.</p>
+                    </div>
                 </div>
                 <div class="solution-card fade-up">
-                    <div class="solution-icon" aria-hidden="true">&#9829;</div>
-                    <h3>Donation Centre &amp; Safe Space</h3>
-                    <p>Open 24/7 and staffed by volunteers, our centre provides free microwaves, dishwashers, toilets, sleeping bags, blankets and medical consultations with a qualified doctor. A warm, safe place when you need it most.</p>
+                    <img class="card-img" src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=600&q=80" alt="Volunteers helping in community centre">
+                    <div class="card-body">
+                        <div class="solution-icon" aria-hidden="true">&#9829;</div>
+                        <h3>Donation Centre &amp; Safe Space</h3>
+                        <p>Open 24/7 and staffed by volunteers, our centre provides free microwaves, dishwashers, toilets, sleeping bags, blankets and medical consultations with a qualified doctor. A warm, safe place when you need it most.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1085,6 +1218,19 @@
 
         document.querySelectorAll('.fade-up').forEach(el => {
             observer.observe(el);
+        });
+
+        /* Dark mode toggle */
+        const darkToggle = document.getElementById('darkToggle');
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            document.body.classList.add('dark');
+            darkToggle.classList.add('active');
+        }
+        darkToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark');
+            darkToggle.classList.toggle('active');
+            localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
         });
 
         /* Simple form handler */
