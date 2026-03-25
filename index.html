@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Helping the Homeless — Warm Meals, Safe Spaces, Real Change</title>
+    <meta name="description" content="A community-powered non-profit in Bournemouth turning gym workouts into hot meals and safe spaces for people experiencing homelessness.">
+    <meta property="og:title" content="Helping the Homeless — Warm Meals, Safe Spaces, Real Change">
+    <meta property="og:description" content="We're a community-powered non-profit turning gym workouts into hot meals for people experiencing homelessness.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="images/og-image.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Helping the Homeless">
+    <meta name="twitter:description" content="Turning community energy into warm meals and safe spaces.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* ===== RESET & BASE ===== */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            color: #333;
+            line-height: 1.6;
+            background: #FFFFFF;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* ===== COLOUR VARIABLES ===== */
+        :root {
+            --primary: #1B5E20;
+            --accent: #2E7D32;
+            --light-bg: #E8F5E9;
+            --white: #FFFFFF;
+            --dark-text: #1a1a1a;
+            --body-text: #444;
+            --muted: #666;
+        }
+
+        /* ===== UTILITY ===== */
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        .section-heading {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 16px;
+        }
+
+        .section-subheading {
+            font-size: 1.1rem;
+            color: var(--muted);
+            text-align: center;
+            max-width: 640px;
+            margin: 0 auto 48px;
+        }
+
+        /* Scroll-triggered animation */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== STICKY HEADER ===== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: var(--white);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            transition: background 0.3s;
+        }
+
+        header .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        nav a {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--body-text);
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 4px;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--dark-text);
+            border-radius: 2px;
+            transition: transform 0.3s, opacity 0.3s;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(135deg, #1B5E20 0%, #2E7D32 50%, #388E3C 100%);
+            color: var(--white);
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('') center/cover no-repeat;
+            opacity: 0.15;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            padding: 120px 20px 80px;
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 36px;
+            line-height: 1.7;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            border: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+
+        .btn-primary {
+            background: var(--white);
+            color: var(--primary);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn-green {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        /* ===== PROBLEM / STATS ===== */
+        .problem {
+            background: var(--light-bg);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .stat-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 32px 24px;
+            text-align: center;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            transition: transform 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .stat-number {
+            font-size: 2.6rem;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1.1;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 0.95rem;
+            color: var(--muted);
+            line-height: 1.5;
+        }
+
+        /* ===== SOLUTION ===== */
+        .solution-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .solution-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 40px 28px;
+            text-align: center;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+            border-top: 4px solid var(--accent);
+        }
+
+        .solution-icon {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: var(--light-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2rem;
+        }
+
+        .solution-card h3 {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 12px;
+        }
+
+        .solution-card p {
+            font-size: 0.95rem;
+            color: var(--body-text);
+            line-height: 1.7;
+        }
+
+        /* ===== HOW IT WORKS ===== */
+        .how-it-works {
+            background: var(--light-bg);
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            align-items: start;
+        }
+
+        .step {
+            text-align: center;
+            position: relative;
+            padding: 24px 16px;
+        }
+
+        .step-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            font-size: 1.8rem;
+        }
+
+        .step h4 {
+            font-size: 1rem;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .step p {
+            font-size: 0.9rem;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        .step-arrow {
+            display: none;
+        }
+
+        /* Arrows between steps on desktop */
+        @media (min-width: 769px) {
+            .step:not(:last-child)::after {
+                content: '\2192';
+                position: absolute;
+                right: -18px;
+                top: 50px;
+                font-size: 1.6rem;
+                color: var(--accent);
+                font-weight: 700;
+            }
+        }
+
+        /* ===== OUR SPACE ===== */
+        .space-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .space-text h3 {
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin-bottom: 12px;
+        }
+
+        .space-text p {
+            color: var(--body-text);
+            margin-bottom: 16px;
+            line-height: 1.7;
+        }
+
+        .space-text ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .space-text ul li {
+            padding: 6px 0;
+            padding-left: 24px;
+            position: relative;
+            color: var(--body-text);
+        }
+
+        .space-text ul li::before {
+            content: '\2713';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .image-placeholder {
+            background: #d4e8d4;
+            border-radius: 16px;
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 1rem;
+            border: 2px dashed var(--accent);
+        }
+
+        /* ===== NON-PROFIT ===== */
+        .nonprofit {
+            background: var(--light-bg);
+        }
+
+        .nonprofit-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            text-align: center;
+        }
+
+        .fund-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 32px 20px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+        }
+
+        .fund-icon {
+            font-size: 2.4rem;
+            margin-bottom: 12px;
+        }
+
+        .fund-card h4 {
+            font-size: 1.05rem;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .fund-card p {
+            font-size: 0.9rem;
+            color: var(--muted);
+        }
+
+        /* ===== TEAM ===== */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .team-card {
+            text-align: center;
+        }
+
+        .team-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: #c8e6c9;
+            margin: 0 auto 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.4rem;
+            color: var(--primary);
+            border: 4px solid var(--accent);
+        }
+
+        .team-card h4 {
+            font-size: 1.1rem;
+            color: var(--dark-text);
+            margin-bottom: 4px;
+        }
+
+        .team-card p {
+            font-size: 0.9rem;
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* ===== GET INVOLVED ===== */
+        .involved {
+            background: var(--light-bg);
+        }
+
+        .involved-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+            margin-bottom: 48px;
+        }
+
+        .involved-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 36px 24px;
+            text-align: center;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+        }
+
+        .involved-card .card-icon {
+            font-size: 2.4rem;
+            margin-bottom: 16px;
+        }
+
+        .involved-card h3 {
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .involved-card p {
+            font-size: 0.93rem;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        .contact-form {
+            max-width: 560px;
+            margin: 0 auto;
+            background: var(--white);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+        }
+
+        .contact-form h3 {
+            font-size: 1.4rem;
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--dark-text);
+            margin-bottom: 6px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-family: 'Nunito', sans-serif;
+            font-size: 0.95rem;
+            transition: border-color 0.2s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-submit {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--primary);
+            color: var(--white);
+            padding: 48px 0 24px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 32px;
+        }
+
+        .footer-about p {
+            opacity: 0.85;
+            font-size: 0.93rem;
+            line-height: 1.7;
+            margin-top: 8px;
+        }
+
+        .footer-links h4,
+        .footer-social h4 {
+            font-size: 1rem;
+            margin-bottom: 16px;
+            opacity: 0.9;
+        }
+
+        .footer-links a {
+            display: block;
+            font-size: 0.9rem;
+            opacity: 0.75;
+            padding: 4px 0;
+            transition: opacity 0.2s;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: 700;
+            transition: background 0.2s;
+        }
+
+        .social-icon:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255,255,255,0.15);
+            font-size: 0.85rem;
+            opacity: 0.7;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 992px) {
+            .stats-grid,
+            .solution-grid,
+            .involved-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .steps {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .nonprofit-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .section-heading {
+                font-size: 1.8rem;
+            }
+
+            .section-padding {
+                padding: 56px 0;
+            }
+
+            nav {
+                position: fixed;
+                top: 64px;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                flex-direction: column;
+                padding: 20px;
+                gap: 16px;
+                box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+                transform: translateY(-120%);
+                transition: transform 0.3s ease;
+            }
+
+            nav.open {
+                transform: translateY(0);
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .stats-grid,
+            .solution-grid,
+            .team-grid,
+            .involved-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .steps {
+                grid-template-columns: 1fr;
+            }
+
+            .space-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .nonprofit-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-form {
+                padding: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <header>
+        <div class="container">
+            <a href="#hero" class="logo">Helping <span>the Homeless</span></a>
+            <nav id="mainNav">
+                <a href="#problem">The Problem</a>
+                <a href="#solution">Our Solution</a>
+                <a href="#how-it-works">How It Works</a>
+                <a href="#space">Our Centre</a>
+                <a href="#nonprofit">Non-Profit</a>
+                <a href="#team">Team</a>
+                <a href="#involved">Get Involved</a>
+            </nav>
+            <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <h1>Warm Meals. Safe Spaces. Real Change.</h1>
+            <p>We're a community-powered non-profit in Bournemouth turning gym workouts into hot meals for people experiencing homelessness.</p>
+            <div class="hero-buttons">
+                <a href="#involved" class="btn btn-primary">Get Involved</a>
+                <a href="#problem" class="btn btn-outline">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== THE PROBLEM ===== -->
+    <section class="problem section-padding" id="problem">
+        <div class="container">
+            <h2 class="section-heading fade-up">Did You Know?</h2>
+            <p class="section-subheading fade-up">Homelessness is not a fringe issue. It is a systemic crisis affecting hundreds of thousands of people across the UK.</p>
+            <div class="stats-grid">
+                <div class="stat-card fade-up">
+                    <div class="stat-number">380,000</div>
+                    <div class="stat-label">People are homeless in the UK right now</div>
+                </div>
+                <div class="stat-card fade-up">
+                    <div class="stat-number">8%</div>
+                    <div class="stat-label">Rise in homelessness from 2025 — and still climbing</div>
+                </div>
+                <div class="stat-card fade-up">
+                    <div class="stat-number">45</div>
+                    <div class="stat-label">Average life expectancy of a homeless person — decades below the national average</div>
+                </div>
+                <div class="stat-card fade-up">
+                    <div class="stat-number">63%</div>
+                    <div class="stat-label">Suffer from a long-term illness, disability or infirmity</div>
+                </div>
+                <div class="stat-card fade-up">
+                    <div class="stat-number">1 in 4</div>
+                    <div class="stat-label">Homeless women have been sexually assaulted</div>
+                </div>
+                <div class="stat-card fade-up">
+                    <div class="stat-number">47x</div>
+                    <div class="stat-label">More likely to be victims of theft than the general population</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== OUR SOLUTION ===== -->
+    <section class="section-padding" id="solution">
+        <div class="container">
+            <h2 class="section-heading fade-up">How We Help</h2>
+            <p class="section-subheading fade-up">Rather than treating symptoms in isolation, we address multiple dimensions of the homeless experience simultaneously.</p>
+            <div class="solution-grid">
+                <div class="solution-card fade-up">
+                    <div class="solution-icon" aria-hidden="true">&#9832;</div>
+                    <h3>Public Microwaves</h3>
+                    <p>We install small, wall-mounted microwaves in areas of high homelessness. People can heat shop-bought meals for around &pound;3, choosing what they want to eat — restoring dignity and autonomy rather than relying solely on soup kitchens with limited menus.</p>
+                </div>
+                <div class="solution-card fade-up">
+                    <div class="solution-icon" aria-hidden="true">&#9889;</div>
+                    <h3>The Energy Gym</h3>
+                    <p>Our gym uses modified dumbbells, rowing machines and exercise bikes that generate electricity through kinetic energy. The power is stored in batteries and used to run our facilities. Members of the public help the homeless simply by working out.</p>
+                </div>
+                <div class="solution-card fade-up">
+                    <div class="solution-icon" aria-hidden="true">&#9829;</div>
+                    <h3>Donation Centre &amp; Safe Space</h3>
+                    <p>Open 24/7 and staffed by volunteers, our centre provides free microwaves, dishwashers, toilets, sleeping bags, blankets and medical consultations with a qualified doctor. A warm, safe place when you need it most.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== HOW IT WORKS ===== -->
+    <section class="how-it-works section-padding" id="how-it-works">
+        <div class="container">
+            <h2 class="section-heading fade-up">The Science Behind the Gym</h2>
+            <p class="section-subheading fade-up">Every workout generates real electricity that powers hot meals and essential facilities for people in need.</p>
+            <div class="steps">
+                <div class="step fade-up">
+                    <div class="step-circle" aria-hidden="true">1</div>
+                    <h4>Kinetic Energy</h4>
+                    <p>Gym users pull cables or pedal bikes, producing kinetic energy through physical movement.</p>
+                </div>
+                <div class="step fade-up">
+                    <div class="step-circle" aria-hidden="true">2</div>
+                    <h4>Generators</h4>
+                    <p>Built-in generators convert the kinetic energy into mechanical power.</p>
+                </div>
+                <div class="step fade-up">
+                    <div class="step-circle" aria-hidden="true">3</div>
+                    <h4>Electricity</h4>
+                    <p>Mechanical power is converted into usable electrical energy.</p>
+                </div>
+                <div class="step fade-up">
+                    <div class="step-circle" aria-hidden="true">4</div>
+                    <h4>Stored &amp; Used</h4>
+                    <p>Electricity is stored in batteries and used to power microwaves, dishwashers and facilities.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== OUR SPACE ===== -->
+    <section class="section-padding" id="space">
+        <div class="container">
+            <h2 class="section-heading fade-up">Our Bournemouth Centre</h2>
+            <p class="section-subheading fade-up">A purpose-built, fully accessible facility designed to feel welcoming — not institutional.</p>
+            <div class="space-layout fade-up">
+                <div class="space-text">
+                    <h3>Ground Floor</h3>
+                    <p>The building is divided into two main areas, each serving a vital purpose:</p>
+                    <ul>
+                        <li><strong>Energy Gym</strong> — housing the modified exercise machines, battery storage and electrical infrastructure</li>
+                        <li><strong>Donation Centre</strong> — public microwaves, dishwashers, seating areas and reception</li>
+                    </ul>
+                    <h3 style="margin-top: 20px;">First Floor</h3>
+                    <ul>
+                        <li>Free public toilet facilities</li>
+                        <li>Two consultation rooms — one general drop-in, one with a qualified doctor</li>
+                    </ul>
+                    <p style="margin-top: 16px; font-size: 0.9rem; color: var(--muted);">Acquired for &pound;55,356.99 &bull; Fully accessible</p>
+                </div>
+                <div>
+                    <div class="image-placeholder" style="margin-bottom: 20px;">Floor Plan Image</div>
+                    <div class="image-placeholder">Building Exterior Photo</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== NON-PROFIT ===== -->
+    <section class="nonprofit section-padding" id="nonprofit">
+        <div class="container">
+            <h2 class="section-heading fade-up">Every Penny Goes Back</h2>
+            <p class="section-subheading fade-up">We operate as a non-profit organisation. All surplus is reinvested directly into helping people on the streets.</p>
+            <div class="nonprofit-grid">
+                <div class="fund-card fade-up">
+                    <div class="fund-icon" aria-hidden="true">&#127873;</div>
+                    <h4>Sleeping Bags</h4>
+                    <p>Warmth and shelter for those sleeping rough</p>
+                </div>
+                <div class="fund-card fade-up">
+                    <div class="fund-icon" aria-hidden="true">&#127858;</div>
+                    <h4>Meals</h4>
+                    <p>Free microwavable meals distributed at the centre</p>
+                </div>
+                <div class="fund-card fade-up">
+                    <div class="fund-icon" aria-hidden="true">&#9764;</div>
+                    <h4>Medical Care</h4>
+                    <p>Qualified doctor consultations at no cost</p>
+                </div>
+                <div class="fund-card fade-up">
+                    <div class="fund-icon" aria-hidden="true">&#128161;</div>
+                    <h4>Facilities</h4>
+                    <p>Maintaining our 24/7 centre and gym equipment</p>
+                </div>
+            </div>
+            <p class="fade-up" style="text-align: center; margin-top: 32px; color: var(--muted); font-size: 0.95rem;">We are transparent about how every pound is spent. Accountable to our community, not shareholders.</p>
+        </div>
+    </section>
+
+    <!-- ===== TEAM ===== -->
+    <section class="section-padding" id="team">
+        <div class="container">
+            <h2 class="section-heading fade-up">Meet the Team</h2>
+            <p class="section-subheading fade-up">Six individuals passionate about making a tangible difference to the lives of people experiencing homelessness.</p>
+            <div class="team-grid">
+                <div class="team-card fade-up">
+                    <div class="team-photo" aria-label="Photo placeholder">AW</div>
+                    <h4>Andy Wadhams</h4>
+                    <p>Co-Founder</p>
+                </div>
+                <div class="team-card fade-up">
+                    <div class="team-photo" aria-label="Photo placeholder">JD</div>
+                    <h4>Johnny Du Cane</h4>
+                    <p>Co-Founder</p>
+                </div>
+                <div class="team-card fade-up">
+                    <div class="team-photo" aria-label="Photo placeholder">FB</div>
+                    <h4>Finnley Baldwin</h4>
+                    <p>Co-Founder</p>
+                </div>
+                <div class="team-card fade-up">
+                    <div class="team-photo" aria-label="Photo placeholder">CJ</div>
+                    <h4>Chris Jones</h4>
+                    <p>Co-Founder</p>
+                </div>
+                <div class="team-card fade-up">
+                    <div class="team-photo" aria-label="Photo placeholder">OM</div>
+                    <h4>Oliver Marsh</h4>
+                    <p>Co-Founder</p>
+                </div>
+                <div class="team-card fade-up">
+                    <div class="team-photo" aria-label="Photo placeholder">JD</div>
+                    <h4>James Dormor</h4>
+                    <p>Co-Founder</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== GET INVOLVED ===== -->
+    <section class="involved section-padding" id="involved">
+        <div class="container">
+            <h2 class="section-heading fade-up">Join Us</h2>
+            <p class="section-subheading fade-up">There are many ways to make a difference. Pick the one that suits you best.</p>
+            <div class="involved-cards">
+                <div class="involved-card fade-up">
+                    <div class="card-icon" aria-hidden="true">&#9996;</div>
+                    <h3>Volunteer</h3>
+                    <p>Help run the donation centre. Staff the reception, assist with meal distribution, or support our medical team. Every hour matters.</p>
+                </div>
+                <div class="involved-card fade-up">
+                    <div class="card-icon" aria-hidden="true">&#127947;</div>
+                    <h3>Work Out for Good</h3>
+                    <p>Use our energy gym and generate power with every rep. Get fitter whilst directly powering hot meals for people in need.</p>
+                </div>
+                <div class="involved-card fade-up">
+                    <div class="card-icon" aria-hidden="true">&#127381;</div>
+                    <h3>Donate Supplies</h3>
+                    <p>Contribute sleeping bags, blankets, microwavable meals or funds. Every donation goes straight to someone who needs it.</p>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="contact-form fade-up">
+                <h3>Get in Touch</h3>
+                <form id="contactForm" onsubmit="handleSubmit(event)">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required placeholder="Your name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required placeholder="your@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required placeholder="How would you like to help?"></textarea>
+                    </div>
+                    <div class="form-submit">
+                        <button type="submit" class="btn btn-green">Send Message</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <div class="logo" style="color: #fff; font-size: 1.3rem;">Helping <span style="color: #81C784;">the Homeless</span></div>
+                    <p>Turning community energy into warm meals and safe spaces. A grassroots non-profit based in Bournemouth, working to make homelessness a little less cold, a little less hungry and a little less lonely.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <a href="#problem">The Problem</a>
+                    <a href="#solution">Our Solution</a>
+                    <a href="#how-it-works">How It Works</a>
+                    <a href="#space">Our Centre</a>
+                    <a href="#team">The Team</a>
+                    <a href="#involved">Get Involved</a>
+                </div>
+                <div class="footer-social">
+                    <h4>Follow Us</h4>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon" aria-label="Instagram">IG</a>
+                        <a href="#" class="social-icon" aria-label="Facebook">FB</a>
+                        <a href="#" class="social-icon" aria-label="X (Twitter)">X</a>
+                        <a href="#" class="social-icon" aria-label="TikTok">TT</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 Helping the Homeless. Registered Non-Profit. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        /* Mobile menu toggle */
+        const hamburger = document.getElementById('hamburger');
+        const mainNav = document.getElementById('mainNav');
+
+        hamburger.addEventListener('click', () => {
+            mainNav.classList.toggle('open');
+        });
+
+        /* Close menu when a link is clicked */
+        mainNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mainNav.classList.remove('open');
+            });
+        });
+
+        /* Scroll-triggered fade-up animations using IntersectionObserver */
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -40px 0px'
+        });
+
+        document.querySelectorAll('.fade-up').forEach(el => {
+            observer.observe(el);
+        });
+
+        /* Simple form handler */
+        function handleSubmit(e) {
+            e.preventDefault();
+            const form = e.target;
+            const btn = form.querySelector('button[type="submit"]');
+            btn.textContent = 'Thank you!';
+            btn.style.background = '#388E3C';
+            btn.disabled = true;
+            setTimeout(() => {
+                form.reset();
+                btn.textContent = 'Send Message';
+                btn.style.background = '';
+                btn.disabled = false;
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
